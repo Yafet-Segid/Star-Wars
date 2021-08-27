@@ -14,14 +14,14 @@ export class App extends Component {
   componentDidMount() {
     fetch("https://swapi.dev/api/planets")
       .then((res) => res.json())
-      .then((json) => json.StarList)
-      .then((StarList) => this.setState({ StarList: StarList }));
+      .then((json) => json.starList)
+      .then((starList) => this.setState({ starList: starList }));
   }
   render() {
     return (
       <div className="App">
         <Header />
-        <Table StarList={this.state.StarList} />
+        <Table starList={this.state.starList} />
         {/* <img className="App" src="./image/star-wars.jpg" /> */}
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Table.css";
 
-const Table = ({ StarList }) => {
+const Table = ({ starList }) => {
   return (
     <table>
       <thead>
@@ -15,8 +15,8 @@ const Table = ({ StarList }) => {
         </tr>
       </thead>
       <tbody>
-        {StarList.length > 0 ? (
-          StarList.map((droplet, index) => {
+        {starList.length > 0 ? (
+          starList.results.map((droplet, index) => {
             return (
               <tr key={index}>
                 <td>{droplet.name}</td>
@@ -30,7 +30,7 @@ const Table = ({ StarList }) => {
           })
         ) : (
           <tr>
-            <td colSpan="5">Loading...</td>
+            <td colSpan="6">Loading...</td>
           </tr>
         )}
       </tbody>
