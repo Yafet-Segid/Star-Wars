@@ -1,0 +1,11 @@
+@font-face {
+  src: url(../font/starjedi/Starjhol.ttf);
+  font-family: star;
+}
+
+.body {
+  font-family: star;
+  font-size: 70px;
+
+  color: black;
+}
