@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./Table.css";
 
-const Table = () => {
-  const [nameValue, setNameValue] = useState("");
-
-  useEffect(() => {
-    fetch("https://swapi.dev/api/planets")
-      .then((res) => res.json())
-      .then((StarList) => {
-        const newNameState = StarList.map((product) => {
-          return product.name;
-        });
-        setNameValue(newNameState);
-      });
-  }, []);
+const Table = ({ StarList }) => {
   return (
-    <div>
-      <table>
+    <table>
+      <thead>
         <tr>
           <th>Name</th>
           <th>Birth date</th>
@@ -25,16 +13,28 @@ const Table = () => {
           <th>Home World</th>
           <th>Species</th>
         </tr>
-        <tr>
-          <td>{nameValue}</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-        </tr>
-      </table>
-    </div>
+      </thead>
+      <tbody>
+        {StarList.length > 0 ? (
+          StarList.map((droplet, index) => {
+            return (
+              <tr key={index}>
+                <td>{droplet.name}</td>
+                <td>{droplet.rotation_period}</td>
+                <td>{droplet.diameter}</td>
+                <td>{droplet.climate}</td>
+                <td>{droplet.terrain}</td>
+                <td>{droplet.surface_water}</td>
+              </tr>
+            );
+          })
+        ) : (
+          <tr>
+            <td colSpan="5">Loading...</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 };
 
