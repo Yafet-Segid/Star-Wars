@@ -15,3 +15,11 @@ div {
   margin-right: 40px;
   margin-left: 40px;
 }
+
+input {
+  margin-left: 10em;
+  margin-bottom: 20px;
+  font-size: 25px;
+  border-radius: 15px;
+  padding: 5px;
+}

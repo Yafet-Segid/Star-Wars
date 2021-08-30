@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import Header from "./Header/Header";
 import Table from "./Table/Table";
-// import Search from "./Search/Search";
+import "./App.css";
 
 export class App extends Component {
   constructor(props) {
@@ -20,13 +19,22 @@ export class App extends Component {
       });
   }
 
+  // const style = {
+  //   position: 'center',
+  //   textAlign: 'center',
+  //   // min-width: 100%;
+  //   // min-height: 100%;
+  //   backgroundSize: 'cover',
+  //   backgroundPosition: 'center',
+  //   // backgroundSize: 100px;
+  // };
+
   render() {
     return (
-      <div className="App">
+      <div>
         <Header />
         {/* <Search products={starList} /> */}
-        <Table products={starList} starList={this.state.starList} />
-        {/* <img className="App" src="./image/star-wars.jpg" /> */}
+        <Table starList={this.state.starList} products={starList} />
       </div>
     );
   }

@@ -1,10 +1,10 @@
-img {
-  /* background-image: url("https://thumbs.gfycat.com/BriefIgnorantBlackbuck-size_restricted.gif"); */
-  position: center;
+div {
+  text-align: cen;
+  background-image: url("https://thumbs.gfycat.com/BriefIgnorantBlackbuck-size_restricted.gif");
+  position: fixed;
   text-align: center;
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
   background-position: center;
-  background-size: 100px;
 }

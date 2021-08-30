@@ -8,10 +8,15 @@ const Table = ({ starList }, props) => {
     return product.includes(searchValue);
   });
 
+  const inputChange = (event) => {
+    filterProducts(event.target.value);
+  };
+
   return (
-    <div>
+    <div className="table">
       <input type="text" value={searchValue} onChange={SetSearchValue} />
-      <table className="table">
+      <input type="text" class="form-control" placeholder=" Search name" />
+      <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -24,7 +29,7 @@ const Table = ({ starList }, props) => {
         </thead>
         <tbody>
           {starList.length > 0 ? (
-            filterProducts.map((droplet, index) => {
+            starList.map((droplet, index) => {
               return (
                 <tr key={index}>
                   <td>{droplet.name}</td>
