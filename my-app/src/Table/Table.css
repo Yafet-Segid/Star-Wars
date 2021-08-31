@@ -1,7 +1,13 @@
+body {
+  color: white;
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin: 20px;
+  /* background-color: white; */
 }
 
 td,
@@ -12,12 +18,12 @@ th {
 }
 
 div {
-  margin-right: 40px;
+  margin-right: 80px;
   margin-left: 40px;
 }
 
 input {
-  margin-left: 10em;
+  margin-top: 1em;
   margin-bottom: 20px;
   font-size: 25px;
   border-radius: 15px;

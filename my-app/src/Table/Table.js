@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import "./Table.css";
 
-const Table = ({ starList }, props) => {
+const Table = ({ starList }) => {
   const [searchValue, SetSearchValue] = useState("");
+  // const [ data, setData ] = useState([]);
 
-  const filterProducts = props.products.filter((product) => {
-    return product.includes(searchValue);
-  });
-
-  const inputChange = (event) => {
-    filterProducts(event.target.value);
-  };
+  //   const loadData = async () => {
+  //     await fetch ("https://swapi.dev/api/planets")
+  //     .then(response => response.json())
+  //     .then(receivedData => setData(receivedData));
+  //   }
+  // }
 
   return (
     <div className="table">
-      <input type="text" value={searchValue} onChange={SetSearchValue} />
-      <input type="text" class="form-control" placeholder=" Search name" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder=" Search name"
+        value={searchValue}
+        onChange={(event) => {
+          SetSearchValue(event.target.value);
+        }}
+      />
+
       <table>
         <thead>
           <tr>
@@ -29,18 +37,28 @@ const Table = ({ starList }, props) => {
         </thead>
         <tbody>
           {starList.length > 0 ? (
-            starList.map((droplet, index) => {
-              return (
-                <tr key={index}>
-                  <td>{droplet.name}</td>
-                  <td>{droplet.birth_year}</td>
-                  <td>{droplet.height}</td>
-                  <td>{droplet.mass}</td>
-                  <td>{droplet.eye_color}</td>
-                  <td>{droplet.gender}</td>
-                </tr>
-              );
-            })
+            starList
+              .filter((droplet) => {
+                if (searchValue == "") {
+                  return droplet;
+                } else if (
+                  droplet.name.toLowerCase().includes(searchValue.toLowerCase())
+                ) {
+                  return droplet;
+                }
+              })
+              .map((droplet, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{droplet.name}</td>
+                    <td>{droplet.birth_year}</td>
+                    <td>{droplet.height}</td>
+                    <td>{droplet.mass}</td>
+                    <td>{droplet.homeworld}</td>
+                    <td>{droplet.species}</td>
+                  </tr>
+                );
+              })
           ) : (
             <tr>
               <td colSpan="6">Loading...</td>

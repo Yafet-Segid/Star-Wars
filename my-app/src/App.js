@@ -11,30 +11,34 @@ export class App extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("https://swapi.dev/api/people")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ starList: data.results });
-      });
-  }
+  async componentDidMount() {
+    const characters = await fetch("https://swapi.dev/api/people");
+    const response = await characters.json();
 
-  // const style = {
-  //   position: 'center',
-  //   textAlign: 'center',
-  //   // min-width: 100%;
-  //   // min-height: 100%;
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center',
-  //   // backgroundSize: 100px;
-  // };
+    // homeworld
+    for (const character of response.results) {
+      const homeworld = character.homeworld;
+      const homeworldResponse = await fetch(homeworld).then((res) =>
+        res.json()
+      );
+      character.homeworld = homeworldResponse.name;
+
+  // species
+      for (const race of response.results) {
+        const species = race.species;
+        const specieResponse = await fetch(species).then((resp) => resp.json());
+        race.species = specieResponse.name;
+      }
+      this.setState({ starList: response.results });
+      // console.log(race);
+    }
+  }
 
   render() {
     return (
       <div>
         <Header />
-        {/* <Search products={starList} /> */}
-        <Table starList={this.state.starList} products={starList} />
+        <Table starList={this.state.starList} />
       </div>
     );
   }
