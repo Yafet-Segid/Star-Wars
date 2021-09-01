@@ -5,6 +5,7 @@ function Header() {
   return (
     <div>
       <h1 className="body"> Star Wars Api </h1>
+      <img src="image/light.png" />
     </div>
   );
 }

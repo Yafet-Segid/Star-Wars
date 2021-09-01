@@ -3,14 +3,6 @@ import "./Table.css";
 
 const Table = ({ starList }) => {
   const [searchValue, SetSearchValue] = useState("");
-  // const [ data, setData ] = useState([]);
-
-  //   const loadData = async () => {
-  //     await fetch ("https://swapi.dev/api/planets")
-  //     .then(response => response.json())
-  //     .then(receivedData => setData(receivedData));
-  //   }
-  // }
 
   return (
     <div className="table">
@@ -18,6 +10,7 @@ const Table = ({ starList }) => {
         type="text"
         class="form-control"
         placeholder=" Search name"
+        
         value={searchValue}
         onChange={(event) => {
           SetSearchValue(event.target.value);

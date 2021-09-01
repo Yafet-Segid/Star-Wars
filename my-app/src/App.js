@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
 import Table from "./Table/Table";
+import Button from "./Button/Next";
 import "./App.css";
 
 export class App extends Component {
@@ -15,6 +16,18 @@ export class App extends Component {
     const characters = await fetch("https://swapi.dev/api/people");
     const response = await characters.json();
 
+    // species
+
+    for (const race of response.results) {
+      if (race.species.length === 0) {
+        race.species = "Human";
+      } else {
+        const species = race.species;
+        const specieResponse = await fetch(species).then((resp) => resp.json());
+        race.species = specieResponse.name;
+      }
+    }
+
     // homeworld
     for (const character of response.results) {
       const homeworld = character.homeworld;
@@ -23,14 +36,7 @@ export class App extends Component {
       );
       character.homeworld = homeworldResponse.name;
 
-  // species
-      for (const race of response.results) {
-        const species = race.species;
-        const specieResponse = await fetch(species).then((resp) => resp.json());
-        race.species = specieResponse.name;
-      }
       this.setState({ starList: response.results });
-      // console.log(race);
     }
   }
 
@@ -39,6 +45,7 @@ export class App extends Component {
       <div>
         <Header />
         <Table starList={this.state.starList} />
+        <Button />
       </div>
     );
   }
