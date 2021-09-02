@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
 import Table from "./Table/Table";
-import Button from "./Button/Next";
+import Pagination from "./Button/Pagination";
 import "./App.css";
 
 export class App extends Component {
@@ -11,7 +11,6 @@ export class App extends Component {
       starList: [],
     };
   }
-
   async componentDidMount() {
     const characters = await fetch("https://swapi.dev/api/people");
     const response = await characters.json();
@@ -40,12 +39,14 @@ export class App extends Component {
     }
   }
 
+  // Change page
+
   render() {
     return (
       <div>
         <Header />
         <Table starList={this.state.starList} />
-        <Button />
+        <Pagination pagination={pagination} setPagination={setPagination} />
       </div>
     );
   }
