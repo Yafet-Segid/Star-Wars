@@ -8,8 +8,11 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentPage: 1,
       starList: [],
+      // dataToShow: response.slice(0, 9),
     };
+    // this.getPages = this.getPages.bind(this);
   }
   async componentDidMount() {
     const characters = await fetch("https://swapi.dev/api/people");
@@ -40,13 +43,19 @@ export class App extends Component {
   }
 
   // Change page
+  getPages(event) {
+    // const { data, pageSize } = this.state;
+    this.setState({
+      currentPage: number(event.target.id),
+    });
+  }
 
   render() {
     return (
       <div>
         <Header />
         <Table starList={this.state.starList} />
-        <Pagination pagination={pagination} setPagination={setPagination} />
+        <Pagination getPages={this.getPages} />
       </div>
     );
   }

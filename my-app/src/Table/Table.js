@@ -10,7 +10,6 @@ const Table = ({ starList }) => {
         type="text"
         class="form-control"
         placeholder=" Search name"
-        
         value={searchValue}
         onChange={(event) => {
           SetSearchValue(event.target.value);
