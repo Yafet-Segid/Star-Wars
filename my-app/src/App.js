@@ -8,14 +8,16 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 1,
+     
       starList: [],
-      // dataToShow: response.slice(0, 9),
     };
-    // this.getPages = this.getPages.bind(this);
+    this.getPages = this.getPages.bind(this);
   }
   async componentDidMount() {
-    const characters = await fetch("https://swapi.dev/api/people");
+   this.fetchCharacters(1);
+  }
+  fetchCharacters = async (page) =>{
+    const characters = await fetch(`https://swapi.dev/api/people/?page=${page}`);
     const response = await characters.json();
 
     // species
@@ -43,11 +45,20 @@ export class App extends Component {
   }
 
   // Change page
-  getPages(event) {
-    // const { data, pageSize } = this.state;
-    this.setState({
-      currentPage: number(event.target.id),
-    });
+  // getPages = (event) => {
+  //   const { data, pageSize } = this.state;
+  //   this.setState({
+  //     currentPage: event,
+  //     dataToShow: data.slice(
+  //       pageSize * (event - 1),
+  //       pageSize * (event - 1) + 9
+  //     ),
+  //   });
+  // };
+
+  //  OR
+  getPages(page) {
+   this.fetchCharacters(page);
   }
 
   render() {
