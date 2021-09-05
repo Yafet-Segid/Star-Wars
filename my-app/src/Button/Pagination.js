@@ -13,7 +13,7 @@ const Pagination = ({ getPages }) => {
       {page}
     </button>
   ));
-  return <div>{paginate}</div>;
+  return <div className="Button_position">{paginate}</div>;
 };
 
 export default Pagination;

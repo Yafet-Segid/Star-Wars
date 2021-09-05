@@ -5,7 +5,7 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 60%;
   margin: 20px;
   background-color: black;
 }
@@ -18,13 +18,14 @@ th {
 }
 
 div {
-  margin-right: 80px;
-  margin-left: 40px;
+  /* margin-right: 50px; */
+  margin-left: 180px;
 }
 
 input {
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-right: 20em;
   font-size: 25px;
   border-radius: 15px;
   padding: 5px;
@@ -33,4 +34,35 @@ input {
   border: solid 2px white;
   outline: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1700px) {
+  table {
+    width: 90%;
+    margin: 20px;
+  }
+  div {
+    /* margin-right: 50px; */
+    margin-left: 40px;
+  }
+  input {
+    font-size: 20px;
+    margin-right: 4em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 10px;
+  }
+  table {
+    margin: 10px;
+  }
+  div {
+    margin-left: 2px;
+  }
+  input {
+    font-size: 11px;
+    margin-right: 1em;
+  }
 }

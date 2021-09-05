@@ -6,12 +6,36 @@
 .body {
   font-family: star;
   font-size: 70px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 20px;
+  margin-right: 7em;
+
   color: yellow;
 }
 
 img {
   width: 30em;
-  
+  margin-right: 30em;
+}
+
+@media screen and (max-width: 1700px) {
+  .body {
+    font-size: 60px;
+    margin-right: 2em;
+  }
+  img {
+    width: 17em;
+    margin-right: 6em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .body {
+    font-size: 30px;
+    margin-right: 1em;
+  }
+  img {
+    width: 25em;
+    margin-right: 2em;
+  }
 }
