@@ -8,7 +8,7 @@ const Table = ({ starList }) => {
     <div className="table">
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         placeholder=" Search name"
         value={searchValue}
         onChange={(event) => {
@@ -31,7 +31,7 @@ const Table = ({ starList }) => {
           {starList.length > 0 ? (
             starList
               .filter((droplet) => {
-                if (searchValue == "") {
+                if (searchValue === "") {
                   return droplet;
                 } else if (
                   droplet.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -46,7 +46,7 @@ const Table = ({ starList }) => {
                     <td>{droplet.birth_year}</td>
                     <td>{droplet.height}</td>
                     <td>{droplet.mass}</td>
-                    <td>{droplet.homeworld}</td>
+                    <td>{droplet.homeWorld}</td>
                     <td>{droplet.species}</td>
                   </tr>
                 );

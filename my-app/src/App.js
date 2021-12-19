@@ -20,11 +20,10 @@ export class App extends Component {
     const characters = (await response.json()).results;
 
     for (const character of characters) {
-      const homeworld = character.homeworld;
-      const response = await fetch(homeworld);
-      character.homeworld = (await response.json()).name;
+      const homeWorld = character.homeWorld;
+      const response = await fetch(homeWorld);
+      character.homeWorld = (await response.json()).name;
 
-      // for (character.species.length === 0) {
       if (character.species.length === 0) {
         character.species = "Human";
       } else {
